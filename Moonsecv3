@@ -391,12 +391,12 @@ getgenv().autoEquip = value
         end)
         
         -- Đợi 50 giây trước khi tiếp tục lặp
-        task.wait(45)
+        task.wait(50)
     end -- Toggle,Def,callback
     print(value)
 end)
 
-Page2_1:LabelLog('auto pray at ??/?/????')
+Page2_1:LabelLog('auto pray at 17/3/2025)
 
 local Page2_2 = Tab2:CraftPage('others', 2) -- Trang 2 trong Tab2
 
