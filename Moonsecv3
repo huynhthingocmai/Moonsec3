@@ -8,8 +8,8 @@ end
 
 local normal = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Lucifer4381/ui-normal-hub/main/scr')))()
 
-_G.Color = Color3.fromRGB(70, 70, 70) -- Màu giao diện
-_G.Logo = 115358086872080 -- ID Logo của Hub
+_G.Color = Color3.fromRGB(255, 182, 193) -- Màu giao diện
+_G.Logo = 125307995960610 -- ID Logo của Hub
 local Win = library:Evil("⭐️flandre hub⭐️", "", _G.Logo)
 
 -- Tạo Tab đầu tiên
@@ -131,9 +131,41 @@ getgenv().FlaggingESP = value
     print(value)
 end)
 
+Page1_2:Toggle('inf jump',nil,function(value)
+getgenv().infi = value 
+ local Player = game.Players.LocalPlayer 
+ if infi ~= inf then 
+ inf = game.UserInputService.JumpRequest:Connect(function() 
+ if infi == false then inf:Disconnect() end 
+     Player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping) 
+ wait() 
+ end) 
+ end  -- Toggle,Def,callback
+    print(value)
+end)
+
+Page1_2:Toggle('noclip',nil,function(value)
+getgenv().Clip = value 
+ wait(0.1) 
+ local function NoclipLoop() 
+ if Clip == true and game.Players.LocalPlayer.Character ~= nil then 
+ for _, c in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do 
+                                 if c:IsA("BasePart") and c.CanCollide == true and c.Name ~= floatName then 
+ c.CanCollide = false 
+ end 
+ end 
+ end 
+ end 
+ Noclipping = game:GetService("RunService").Stepped:Connect(NoclipLoop) 
+
+ if not getgenv().Clip then Noclipping:Disconnect() end  -- Toggle,Def,callback
+    print(value)
+end)
+
 local players = game:GetService("Players")
 local localPlayer = players.LocalPlayer
 local selectedPlayer = nil -- Lưu người chơi được chọn
+local dropdown -- Lưu dropdown để cập nhật
 
 -- Hàm lấy danh sách người chơi
 local function getPlayerNames()
@@ -144,11 +176,19 @@ local function getPlayerNames()
     return names
 end
 
--- Dropdown chọn người chơi
-Page1_2:Dropdown("Chooss player👇", getPlayerNames(), {""}, function(v)
-    selectedPlayer = v
-    print("Đã chọn:", v)
-end)
+-- Hàm tạo lại dropdown
+local function createDropdown()
+    if dropdown then
+        dropdown:Remove() -- Xóa dropdown cũ nếu có
+    end
+    dropdown = Page1_2:Dropdown("Chooss player👇", getPlayerNames(), {""}, function(v)
+        selectedPlayer = v
+        print("Đã chọn:", v)
+    end)
+end
+
+-- Tạo dropdown lần đầu
+createDropdown()
 
 -- Button teleport đến người được chọn
 Page1_2:Button("Teleport", function()
@@ -167,6 +207,11 @@ Page1_2:Button("Teleport", function()
         print("Hãy chọn một người chơi trước.")
     end
 end)
+
+-- Sự kiện cập nhật danh sách khi có người vào hoặc rời
+players.PlayerAdded:Connect(createDropdown)
+players.PlayerRemoving:Connect(createDropdown)
+
 
 -- Tạo Tab thứ hai
 local Tab2 = Win:CraftTab('Main') -- Tạo tab 'Main 2'
@@ -396,7 +441,7 @@ getgenv().autoEquip = value
     print(value)
 end)
 
-Page2_1:LabelLog('auto pray at 17/3/2025)
+Page2_1:LabelLog('auto pray at 17/3/2025')
 
 local Page2_2 = Tab2:CraftPage('others', 2) -- Trang 2 trong Tab2
 
@@ -762,7 +807,7 @@ local Page5_1 = Tab5:CraftPage('credits',1) -- Name,1 or 2
 
 Page5_1:LabelLog('gui make by neoware')
 
-Page5_1:LabelLog('script make by 54hz')
+Page5_1:LabelLog('❤️tysm for use Ngoc Mai's script❤️(54hz)')
 
 Page5_1:LabelLog('script make by 54hz')
 
