@@ -805,22 +805,8 @@ local Tab5 = Win:CraftTab('credits') -- Name
 
 local Page5_1 = Tab5:CraftPage('credits',1) -- Name,1 or 2
 
-Page5_1:LabelLog('gui make by neoware')
+Page5_1:LabelLog('neoware')
 
-Page5_1:LabelLog('❤️tysm for use Ngoc Mai's script❤️(54hz)')
+Page5_1:LabelLog('Ngoc Mai(54hz)')
 
-Page5_1:LabelLog(':3')
-
-Page5_1:LabelLog('script make by 54hz')
-
-Page5_1:LabelLog('script make by 54hz')
-
-Page5_1:LabelLog('script make by 54hz')
-
-Page5_1:LabelLog('script make by 54hz')
-
-Page5_1:LabelLog('script make by 54hz')
-
-Page5_1:LabelLog('script make by 54hz')
-
-Page5_1:LabelLog('script make by 54hz')
+Page5_1:LabelLog('An(my classmate)')
