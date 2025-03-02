@@ -441,6 +441,47 @@ getgenv().autoEquip = value
     print(value)
 end)
 
+Page2_1:Toggle('auto pray',nil,function(value)
+-- by Duy Dz
+
+getgenv().AutoPray = value -- Đổi thành false để tắt script
+
+local v = game:GetService("VirtualInputManager")
+local p = game:GetService("Players").LocalPlayer.PlayerGui.Pop.NotPray:FindFirstChild("Pray")
+local p2 = workspace.Map.Snow:FindFirstChild("Pray")
+local p3 = game.Players.LocalPlayer.Character.HumanoidRootPart
+local p4 = game:GetService("Players").LocalPlayer.PlayerGui.Pop:FindFirstChild("NotPray")
+
+local function c(btn)
+    local btnPos = btn.AbsolutePosition
+    local btnSize = btn.AbsoluteSize 
+    local btn = btnPos + (btnSize / 1)
+    v:SendMouseButtonEvent(btn.X, btn.Y - 2, 0, true, game, 0)
+    v:SendMouseButtonEvent(btn.X, btn.Y - 2, 0, false, game, 0)
+end
+
+task.spawn(function()
+    while wait() do
+        if not getgenv().AutoPray then return end -- Kiểm tra nếu AutoPray bị tắt thì dừng script
+        
+        if p2 and p3.CFrame ~= p2.CFrame and not p4.Visible then
+            p3.CFrame = p2.CFrame
+            wait(0.5)
+            v:SendKeyEvent(true, Enum.KeyCode.G, false, game)
+            wait(1.5)
+            v:SendKeyEvent(false, Enum.KeyCode.G, false, game)
+        end
+        
+        if p then
+            c(p)
+            wait(0.5)
+        end
+    end
+end)
+ -- Toggle,Def,callback
+    print(value)
+end)
+
 Page2_1:LabelLog('auto pray at 17/3/2025')
 
 local Page2_2 = Tab2:CraftPage('others', 2) -- Trang 2 trong Tab2
@@ -805,10 +846,22 @@ local Tab5 = Win:CraftTab('credits') -- Name
 
 local Page5_1 = Tab5:CraftPage('credits',1) -- Name,1 or 2
 
-Page5_1:LabelLog('neoware')
+Page5_1:LabelLog('auto pray by duyvel')
 
-Page5_1:LabelLog('Ngoc Mai(54hz)')
+Page5_1:LabelLog('script make by 54hz')
 
-Page5_1:LabelLog('An(my classmate)')
+Page5_1:LabelLog('script make by 54hz')
 
-Page5_1:LabelLog('i will show face soon')
+Page5_1:LabelLog('script make by 54hz')
+
+Page5_1:LabelLog('script make by 54hz')
+
+Page5_1:LabelLog('script make by 54hz')
+
+Page5_1:LabelLog('script make by 54hz')
+
+Page5_1:LabelLog('script make by 54hz')
+
+Page5_1:LabelLog('script make by 54hz')
+
+Page5_1:LabelLog('script make by 54hz')
