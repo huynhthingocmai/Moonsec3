@@ -1,3 +1,11 @@
+local player = game.Players.LocalPlayer
+
+if player.Name == "whatdahell" or player.Name == "hoajldh456" or player.Name == "NOOD_Mouse" or player.Name == "hoang_huy1k9" or player.Name == "thaylam5A1" then
+    print("buy script")
+else
+    player:Kick("buy script discord:nhm_roblox")
+end
+
 local normal = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Lucifer4381/ui-normal-hub/main/scr')))()
 
 _G.Color = Color3.fromRGB(255, 182, 193) -- Màu giao diện
